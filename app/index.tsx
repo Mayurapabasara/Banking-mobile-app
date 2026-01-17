@@ -2,12 +2,15 @@ import Header from "@/layouts/header"
 import Entypo from '@expo/vector-icons/Entypo'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { Link } from "expo-router"
-import React, { useRef } from 'react'
-import { DrawerLayoutAndroid, Text, TouchableOpacity, View } from 'react-native'
+import React from 'react'
+import { Text, TouchableOpacity, View } from 'react-native'
+import useDrawer from "../contex/contex-hooks/useDrawer"
 import "../global.css"
 
 const Index = () => {
   // const drawer = useRef<DrawerLayoutAndroid>(null)
+
+  const { drawer } = useDrawer()
 
   const navigationView = (
     <View className="flex-1 bg-gray-200 pt-10">
@@ -19,12 +22,12 @@ const Index = () => {
   )
 
   return (
-    <DrawerLayoutAndroid
-      ref={drawer}
-      drawerWidth={300}
-      drawerPosition="left"
-      renderNavigationView={() => navigationView}
-    >
+    // <DrawerLayoutAndroid
+    //   ref={drawer}
+    //   drawerWidth={300}
+    //   drawerPosition="left"
+    //   renderNavigationView={() => navigationView}
+    // >
     <View className="flex-1 items-center bg-white">
       
       <Header Left={<TouchableOpacity>
@@ -33,7 +36,7 @@ const Index = () => {
       
         centerText="Home"
 
-        Right={<TouchableOpacity onPress={() => drawer.current?.openDrawer()}>
+        Right={<TouchableOpacity onPress={() => drawer?.current?.openDrawer()}>
           <Entypo name="menu" size={28} color="black" />
         </TouchableOpacity>}
       />
@@ -62,7 +65,6 @@ const Index = () => {
         }   
       }} className="mt-4 px-4 py-2 bg-red-500 rounded"> Go to Test1 </Link> 
     </View>
-    </DrawerLayoutAndroid>
   )
 }
 
