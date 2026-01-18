@@ -1,5 +1,6 @@
 import { createContext, useRef } from 'react';
-import { DrawerLayoutAndroid, Text, View } from 'react-native';
+import { DrawerLayoutAndroid } from 'react-native';
+import Menu from '../layouts/menu';
 
 interface IDrawerContext {
     drawer: React.RefObject<DrawerLayoutAndroid | null>;
@@ -13,9 +14,7 @@ const DrawerProvider = ({children}: {children: React.JSX.Element}) => {
     const drawer = useRef<DrawerLayoutAndroid>(null)
     
     const navigationView = (
-        <View style={{ flex: 1, backgroundColor: '#ccc', paddingTop: 40 }}>
-            <Text>Navigation Menu</Text>
-        </View>
+        <Menu />
     )
 
   return (
